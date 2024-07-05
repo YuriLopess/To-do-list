@@ -1,34 +1,39 @@
+import Form from './components/Form'
+import ToDo from './components/ToDo'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [toDo, setToDo] = useState([
+    {
+      id: 1,
+      text: "Go to workout.",
+      category: "(Personal)",
+      isCompleted: false,
+    },
+    {
+      id: 2,
+      text: "Sleep at 9 o'clock.",
+      category: "(Personal)",
+      isCompleted: false,
+    },
+    {
+      id: 3,
+      text: "Make a snack after studyign",
+      category: "(Pesonal)",
+      isCompleted: false,
+    }
+  ])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='app'>
+      <h1>Task List</h1>
+      <div className='to-do-list'>
+        {toDo.map((toDo => (
+          <ToDo toDo={toDo}/>
+        )))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Form/>
+    </div>
   )
 }
 
