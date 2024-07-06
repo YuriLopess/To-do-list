@@ -35,8 +35,24 @@ input {
   box-sizing: border-box;
 }
 
+.to-do-list {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--color-three);
+}
+
+.toDo {
+  background-color: var(--color-two);
+  border-radius: 5px;
+  padding: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 button {
-  margin-right: 5px;
+  margin-right: 10px;
   padding: 5px 10px;
   border-radius: 5px;
   opacity: 0.8;

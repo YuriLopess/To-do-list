@@ -18,21 +18,32 @@ function App() {
     },
     {
       id: 3,
-      text: "Make a snack after studyign",
-      category: "(Pesonal)",
+      text: "Make a snack after studying",
+      category: "(Personal)",
       isCompleted: false,
     }
   ])
+
+  const addToDo = (text, category) => {
+    const newToDo = [...toDo, {
+      id: Math.floor(Math.random() * 10000),
+      text,
+      category,
+      isCompleted: false
+    }];
+
+    setToDo(newToDo)
+  }
 
   return (
     <div className='app'>
       <h1>Task List</h1>
       <div className='to-do-list'>
-        {toDo.map((toDo => (
-          <ToDo toDo={toDo}/>
-        )))}
+        {toDo.map((toDo) => (
+          <ToDo key={toDo.id} toDo={toDo}/>
+        ))}
       </div>
-      <Form/>
+      <Form addToDo={addToDo}/>
     </div>
   )
 }
