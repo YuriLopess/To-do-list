@@ -1,5 +1,7 @@
 import Form from './components/Form'
 import ToDo from './components/ToDo'
+import Search from './components/Search';
+import Filter from './components/Filter';
 import { useState } from 'react'
 
 function App() {
@@ -23,6 +25,12 @@ function App() {
       isCompleted: false,
     }
   ])
+
+  const [search, setSearch] = useState("");
+
+  const [filter, setFilter] = useState("All");
+  const [sort, setSort] = useState("Asc");
+
 
   const addToDo = (text, category) => {
     const newToDo = [...toDo, {
@@ -51,8 +59,13 @@ function App() {
   return (
     <div className='app'>
       <h1>Task List</h1>
+      <Search search={search} setSearch={setSearch}/>
+      <Filter filter={filter} setFilter={setFilter} setSort={setSort}/>
       <div className='to-do-list'>
-        {toDo.map((toDo) => (
+        {toDo.filter((toDo) => filter === "All" ? true : filter === "Completed" ? toDo.isCompleted : !toDo.isCompleted)
+        .filter((toDo) => toDo.text.toLowerCase().includes(search.toLowerCase()))
+        .sort((a, b) => sort === "Asc" ? a.text.localeCompare(b.text) : b.text.localeCompare(a.text))
+        .map((toDo) => (
           <ToDo key={toDo.id} toDo={toDo} removeToDo={removeToDo} completeToDo={completeToDo}/>
         ))}
       </div>

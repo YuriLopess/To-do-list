@@ -45,7 +45,7 @@ input {
   background-color: var(--color-two);
   border-radius: 5px;
   padding: 4px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,4 +79,20 @@ input, select {
   border: 3px solid var(--color-three);
   background-color: var(--color-two);
   color: #757575;
+}
+
+.filter, .search {
+  border-bottom: 3px solid var(--color-three);
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.filter-options div {
+  flex: 1 1 0;
 }
